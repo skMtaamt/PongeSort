@@ -31,7 +31,8 @@ public class java {
             
             InputStream i = client.getInputStream();
             ObjectInputStream o = new ObjectInputStream(i);
-            System.out.println(o.readChar());
+            char[] c = (char[]) o.readObject();
+            System.out.println(c);
                        
             i.close();
             
@@ -39,6 +40,8 @@ public class java {
             
             client.close();
         } catch (IOException ex) {
+            Logger.getLogger(java.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(java.class.getName()).log(Level.SEVERE, null, ex);
         }
         
