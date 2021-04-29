@@ -31,8 +31,27 @@ public class java {
             
             InputStream i = client.getInputStream();
             ObjectInputStream o = new ObjectInputStream(i);
+            char[] nuovo = new char[10];
+            
             char[] c = (char[]) o.readObject();
+            int index = 0;
+            while(true){
+                boolean tf = true;
+                for(char x : c) {
+                    if((x != '-') || (index < 10)) tf = false;
+                }
+                if(tf){
+                   break; 
+                }
+                int nnn = (int)(Math.random()*9);
+                System.out.println(index);
+                nuovo[index] = c[nnn];
+                c[nnn] = '-';
+                index++;
+            }
+            
             System.out.println(c);
+            System.out.println(nuovo);
                        
             i.close();
             
