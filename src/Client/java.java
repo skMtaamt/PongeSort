@@ -30,13 +30,12 @@ public class java {
         }
         char[] c = new char[10];
         for(int x = 0; x < c.length; x++) c[x] = (char)(int)(65+Math.random()*23);
-        
         try {
             
             OutputStream o = s.getOutputStream();
             ObjectOutputStream oo = new ObjectOutputStream(o);
             
-            oo.writeChar(c[0]);
+            oo.writeObject(c);
             
             oo.flush();
             
